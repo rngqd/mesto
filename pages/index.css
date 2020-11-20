@@ -11,3 +11,10 @@
 @import url(../blocks/profile/__post/profile__post.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__add/profile__add.css);
+@import url(../blocks/galary/galary.css);
+@import url(../blocks/galary/__card/galary__card.css);
+@import url(../blocks/galary/__image/galary__image.css);
+@import url(../blocks/galary/__text/galary__text.css);
+@import url(../blocks/galary/__like/galary__like.css);
+@import url(../blocks/galary/__info/galary__info.css);
+
