@@ -1,6 +1,6 @@
 .popup__close {
   position: absolute;
-  background: url(../../../images/Add_button.svg);
+  background: url(../../../images/Close__button.svg);
   right: 0px;
   top: -39.62px;
   transform: rotate(-45deg);
