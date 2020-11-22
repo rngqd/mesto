@@ -16,51 +16,51 @@
     <section class="profile section section__markup">
       <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar" />
       <p class="profile__name">Жак-Ив Кусто</p>
-      <button class="profile__edit"></button>
+      <button type="button" class="profile__edit"></button>
       <p class="profile__post">Исследователь океана</p>
-      <button class="profile__add" id="data"><img src="./images/Add_button.svg" alt=""></button>
+      <button type="button" class="profile__add" id="data"><img src="./images/Add_button.svg" alt=""></button>
     </section>
     <section class="galary section section__markup">
       <div class="galary__card">
         <img class="galary__image" src="./images/kurgan.jpg" alt="Курган" />
         <div class="galary__info">
           <p class="galary__text">Курган</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
       </div>
     </div>
       <div class="galary__card">
         <img class="galary__image" src="./images/centr.jpg" alt="Центр города" />
         <div class="galary__info">
           <p class="galary__text">Центр города</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
       </div>
     </div>
       <div class="galary__card">
         <img class="galary__image" src="./images/most.jpg" alt="Подвесной мост" />
         <div class="galary__info">
           <p class="galary__text">Подвесной мост</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
       </div>
     </div>
       <div class="galary__card">
         <img class="galary__image" src="./images/partizan.jpg" alt="Площадь партизан" />
         <div class="galary__info">
           <p class="galary__text">Площадь партизан</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
       </div>
     </div>
       <div class="galary__card">
         <img class="galary__image" src="./images/plane.jpg" alt="Самолёт" />
         <div class="galary__info">
           <p class="galary__text">Самолёт</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
       </div>
     </div>
       <div class="galary__card">
         <img class="galary__image" src="./images/train_station.jpg" alt="Вокзал" />
         <div class="galary__info">
           <p class="galary__text">Вокзал</p>
-          <button class="galary__like"></button>
+          <button type="button" class="galary__like"></button>
         </div>
       </div>
     </section>
@@ -68,5 +68,16 @@
   <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
+  <div class="popup"> <!--popup_visible-->
+    <div class="popup__window">
+      <button type="button" class="popup__close"></button>
+      <p class="popup__subtitle">Редактировать профиль</p>
+      <form class="popup__form"></form>
+        <input type="text" name="name" class="popup__profile">
+        <input type="text" name="post" class="popup__profile">
+      </form>
+      <button type="button" class="popup__save"><p class="popup__save-text">Сохранить</p></button>
+    </div>
+  </div>
 </body>
 </html>
