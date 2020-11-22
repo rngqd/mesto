@@ -1,0 +1,9 @@
+.footer__text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #545454;
+  margin: 48px auto 36px;
+  max-width: 282px;
+}
