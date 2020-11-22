@@ -2,3 +2,6 @@
   border-radius: 10px;
   overflow: hidden;
 }
+.galary__card:first-of-type {
+  margin-top: 36px;
+}
