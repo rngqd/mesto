@@ -1,0 +1,20 @@
+.profile__edit {
+  background: url(../../../images/Edit_Button.svg);
+  position: absolute;
+  top: 198px;
+  right: 22px;
+  background-size: cover;
+  border: none;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media screen and (min-width:768px) {
+  .profile__edit {
+    top: 37px;
+    left: 462px;
+  }
+}
