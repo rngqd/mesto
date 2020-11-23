@@ -1,3 +1,9 @@
 .profile {
   position: relative;
 }
+
+@media screen and (min-width:768px) {
+  .profile {
+    margin-top: 40px;
+  }
+}

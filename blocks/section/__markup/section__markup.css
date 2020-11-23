@@ -2,3 +2,16 @@
     max-width: 282px;
     margin: 0 auto;
 }
+
+@media screen and (min-width:768px) {
+    .section__markup {
+    max-width: 700px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .section__markup {
+        max-width: 880px;
+    }
+}
+
