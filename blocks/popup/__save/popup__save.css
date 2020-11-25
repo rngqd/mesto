@@ -6,4 +6,9 @@
   border: none;
   margin: 45px 0 25px;
   cursor: pointer;
+  transition: .3s ease-out;
+}
+
+.popup__save:hover {
+opacity: 0.8;
 }

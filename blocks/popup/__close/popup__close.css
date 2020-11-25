@@ -11,4 +11,8 @@
   background-color: transparent;
   cursor: pointer;
   padding: 0;
+  transition: .3s ease-out;
+}
+.popup__close:hover {
+  opacity: 0.6;
 }
