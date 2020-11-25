@@ -1,12 +1,18 @@
 .popup__profile {
   border: none;
-  opacity: 0.2;
-  border-bottom: 1px solid #000000;
+  opacity: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 238px;
+  height: 27px;
   padding: 0;
   margin-top: 75px;
   box-sizing: border-box;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
 }
 .popup__profile:last-of-type {
-margin-top: 30px;
+  margin-top: 30px;
 }
