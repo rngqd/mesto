@@ -1,12 +1,7 @@
 .galary__info {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   padding: 25px 15px 31px 21px;
   background-color: white;
-  max-width: 282px;
-}
-
-@media screen and (min-width: 768px) {
-  .galary__info {
-
-  }
+  min-width: 242px;
 }

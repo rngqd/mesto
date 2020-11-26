@@ -1,7 +1,4 @@
 .galary__like {
-  position: absolute;
-  top: 31px;
-  right: 22.24px;
   background-image: url(../../../images/Like__button.svg);
   width: 20.76px;
   height: 18.13px;
@@ -9,6 +6,7 @@
   background-color: transparent;
   cursor: pointer;
   transition: .3s ease-out;
+  margin: 6px 3.24px 1.13px auto;
 }
 
 .galary__like:hover {

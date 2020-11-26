@@ -8,3 +8,11 @@
   margin: 0px;
   padding-top: 25px;
 }
+
+@media screen and (min-width:1024px) { 
+  .popup__subtitle {
+  padding-top: 34px;
+  margin: 0 64px 0 36px;
+  font-size: 24px;
+  line-height: 29px;
+}
