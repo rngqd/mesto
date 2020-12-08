@@ -1,7 +1,8 @@
 .galary__card {
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
-  max-width: 282px;
+  min-width: 282px;
 }
 .galary__card:first-of-type {
   margin-top: 36px;

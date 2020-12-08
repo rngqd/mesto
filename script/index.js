@@ -40,7 +40,19 @@ function composeCards({name, link}) {
   const cardLink = initialCard.querySelector('.galary__image');
   cardName.textContent = name;
   cardLink.src = link;
+  initialCard.querySelector('.galary__like').addEventListener('click', activateLikeButton);
+  initialCard.querySelector('.galary__trash').addEventListener('click',deleteTargetCard);
   return initialCard;
+}
+
+function activateLikeButton(evt) {
+  const targetLike = evt.target
+  targetLike.classList.toggle('galary__like_active')
+}
+
+function deleteTargetCard(evt) {
+  const targetCard = evt.target.closest('.galary__card');
+  targetCard.remove();
 }
 
 function handleSubmitCard() {

@@ -16,8 +16,10 @@
 @import url(../blocks/galary/galary.css);
 @import url(../blocks/galary/__card/galary__card.css);
 @import url(../blocks/galary/__image/galary__image.css);
+@import url(../blocks/galary/__trash/galary__trash..css);
 @import url(../blocks/galary/__text/galary__text.css);
 @import url(../blocks/galary/__like/galary__like.css);
+@import url(../blocks/galary/__like/_active/galary__like_active.css);
 @import url(../blocks/galary/__info/galary__info.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/footer/__text/footer__text.css);
