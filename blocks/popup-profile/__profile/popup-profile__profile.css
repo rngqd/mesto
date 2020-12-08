@@ -1,4 +1,4 @@
-.popup__profile {
+.popup-profile__profile {
   border: none;
   opacity: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -14,12 +14,12 @@
   color: #000000;
 }
 
-.popup__profile:last-of-type {
+.popup-profile__profile:last-of-type {
   margin-top: 30px;
 }
 
 @media screen and (min-width: 1024px) {
-  .popup__profile {
+  .popup-profile__profile {
     margin-top: 54px;
     width: 358px;
   }

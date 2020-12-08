@@ -1,4 +1,4 @@
-.popup__window {
+.popup-profile__window {
   position: relative;
   min-width: 282px;
   margin: 0 auto;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width:1024px) {
-  .popup__window {
+  .popup-profile__window {
     min-width: 430px;
   }
 }

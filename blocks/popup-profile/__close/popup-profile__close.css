@@ -1,4 +1,4 @@
-.popup__close {
+.popup-profile__close {
   position: absolute;
   background: url(../../../images/Close__button.svg);
   right: 0px;
@@ -14,6 +14,6 @@
   transition: .3s ease-out;
 }
 
-.popup__close:hover {
+.popup-profile__close:hover {
   opacity: 0.6;
 }

@@ -1,4 +1,4 @@
-.popup__save {
+.popup-profile__save {
   background: #000000;
   border-radius: 2px;
   width: 238px;
@@ -15,12 +15,12 @@
   text-align: center;
 }
 
-.popup__save:hover {
+.popup-profile__save:hover {
 opacity: 0.8;
 }
 
 @media screen and (min-width: 1024px) {
-  .popup__save {
+  .popup-profile__save {
   margin-top: 48px;
   width: 358px;
   font-size: 18px;

@@ -26,64 +26,32 @@
     </section>
 
     <section class="galary section section_type_narrow">
-      <div class="galary__card">
-        <img class="galary__image" src="./images/kurgan.jpg" alt="Курган">
-        <div class="galary__info">
-          <h2 class="galary__text">Курган</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
-      <div class="galary__card">
-        <img class="galary__image" src="./images/centr.jpg" alt="Центр города">
-        <div class="galary__info">
-          <h2 class="galary__text">Центр города</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
-      <div class="galary__card">
-        <img class="galary__image" src="./images/most.jpg" alt="Подвесной мост">
-        <div class="galary__info">
-          <h2 class="galary__text">Подвесной мост</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
-      <div class="galary__card">
-        <img class="galary__image" src="./images/partizan.jpg" alt="Площадь партизан">
-        <div class="galary__info">
-          <h2 class="galary__text">Площадь партизан</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
-      <div class="galary__card">
-        <img class="galary__image" src="./images/plane.jpg" alt="Самолёт">
-        <div class="galary__info">
-          <h2 class="galary__text">Самолёт</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
-      <div class="galary__card">
-        <img class="galary__image" src="./images/train_station.jpg" alt="Вокзал">
-        <div class="galary__info">
-          <h2 class="galary__text">Вокзал</h2>
-          <button type="button" class="galary__like"></button>
-        </div>
-      </div>
+      
     </section>
   </main>
   <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
-    <div class="popup__window">
-      <button type="button" class="popup__close"></button>
-      <h2 class="popup__subtitle">Редактировать профиль</h2>
-      <form class="popup__form" name="popup">
-        <input type="text" name="name" id="name" class="popup__profile" value="">
-        <input type="text" name="post" id="post" class="popup__profile" value="">
-        <button type="submit" class="popup__save">Сохранить</button>
+  <div class="popup-profile">
+    <div class="popup-profile__window">
+      <button type="button" class="popup-profile__close"></button>
+      <h2 class="popup-profile__subtitle">Редактировать профиль</h2>
+      <form class="popup-profile__form" name="popup-profile">
+        <input type="text" name="name" id="name" class="popup-profile__profile" value="">
+        <input type="text" name="post" id="post" class="popup-profile__profile" value="">
+        <button type="submit" class="popup-profile__save">Сохранить</button>
       </form>
     </div>
   </div>
+  <template class ="template">
+    <div class="galary__card">
+      <img class="galary__image" src="" alt="">
+      <div class="galary__info">
+        <h2 class="galary__text"></h2>
+        <button type="button" class="galary__like"></button>
+      </div>
+    </div>
+  </template>
   <script src="./script/index.js"></script>
 </body>
 
