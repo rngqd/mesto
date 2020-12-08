@@ -1,0 +1,17 @@
+.popup__save {
+  background: #000000;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: .3s ease-out;
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.popup__save:hover {
+opacity: 0.8;
+}

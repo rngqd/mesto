@@ -1,16 +1,14 @@
-.popup-profile__subtitle {
-  text-align: center;
+.popup__subtitle {
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
   line-height: 22px;
   color: #000000;
   margin: 0px;
-  padding-top: 25px;
 }
 
 @media screen and (min-width:1024px) { 
-  .popup-profile__subtitle {
+  .popup__subtitle {
   padding-top: 34px;
   margin: 0 64px 0 36px;
   font-size: 24px;

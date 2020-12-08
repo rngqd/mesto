@@ -1,0 +1,16 @@
+.popup__save_edit_card {
+  width: 200px;
+  height: 40px;
+  margin: 36px 0 30px;
+}
+
+@media screen and (min-width: 1024px) {
+  .popup__save_edit_card {
+  margin-top: 48px;
+  width: 358px;
+  font-size: 18px;
+  line-height: 22px;
+  height: 50px;
+  margin-bottom: 37px;
+  }
+}

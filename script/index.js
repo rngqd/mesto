@@ -25,46 +25,76 @@ const initialCards = [
   }
 ]; 
 const templateElement = document.querySelector('.template')
-const InitialCardsContainer = document.querySelector('.galary')
+const CardsContainer = document.querySelector('.galary')
+const newCardName = document.querySelector('#card-name')
+const newCardLink = document.querySelector('#card-link')
 
-function renderCards() {
+function renderInitialCards() {
   const cardsNode = initialCards.map(composeCards);
-  InitialCardsContainer.append(...cardsNode);
-}
-renderCards()
-
-function composeCards(card) {
-  const newCard = templateElement.content.cloneNode(true);
-  console.log(newCard);
-  const cardText = newCard.querySelector('.galary__text');
-  const cardLink = newCard.querySelector('.galary__image');
-  cardText.textContent = card.name;
-  cardLink.src = card.link;
-  return newCard;
+  CardsContainer.append(...cardsNode);
 }
 
-let popUpProfileNode = document.querySelector('.popup-profile'); 
-let handleEditButton = document.querySelector('.profile__edit'); 
-let handleCloseButton = document.querySelector('.popup-profile__close'); 
-let profileName = document.querySelector('.profile__name'); 
-let profilePost = document.querySelector('.profile__post'); 
-let profileEditName = document.querySelector('#name'); 
-let profileEditPost = document.querySelector('#post'); 
-let formElement = document.querySelector('.popup-profile__form') 
+function composeCards({name, link}) {
+  const initialCard = templateElement.content.cloneNode(true);
+  const cardName = initialCard.querySelector('.galary__text');
+  const cardLink = initialCard.querySelector('.galary__image');
+  cardName.textContent = name;
+  cardLink.src = link;
+  return initialCard;
+}
+
+function handleSubmitCard() {
+  const formSubmitCard = document.querySelector('.popup__form_edit_card');
+  formSubmitCard.addEventListener('submit', addCard);
+
+}
+
+function addCard(evt) {
+  evt.preventDefault();
+  const newElCard = composeCards({name: newCardName.value, link: newCardLink.value})
+  CardsContainer.prepend(newElCard);
+}
+
+const popUpProfileNode = document.querySelector('.popup_edit_profile'); 
+const handleEditProfileButton = document.querySelector('.profile__edit'); 
+const handleCloseProfileButton = document.querySelector('.popup__close_edit_profile'); 
+const profileName = document.querySelector('.profile__name'); 
+const profilePost = document.querySelector('.profile__post'); 
+const profileEditName = document.querySelector('#profile-name'); 
+const profileEditPost = document.querySelector('#profile-post'); 
+const formSubmitProfile = document.querySelector('.popup__form_edit_profile');
 
 function addPopUpProfile() { 
   profileEditName.value = profileName.textContent;
   profileEditPost.value = profilePost.textContent;
-  popUpProfileNode.classList.toggle('popup-profile_visible');
+  popUpProfileNode.classList.toggle('popup_visible');
 }
-handleEditButton.addEventListener('click', addPopUpProfile);
+
+handleEditProfileButton.addEventListener('click', addPopUpProfile);
 function closePopUpProfile() {
-  popUpProfileNode.classList.toggle('popup-profile_visible');
+  popUpProfileNode.classList.toggle('popup_visible');
 }
-handleCloseButton.addEventListener('click', closePopUpProfile);
-function formSubmitHandler(evt) {
+
+handleCloseProfileButton.addEventListener('click', closePopUpProfile);
+function profileFormSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = profileEditName.value;
   profilePost.textContent = profileEditPost.value;
+  closePopUpProfile();
 }
-formElement.addEventListener('submit', formSubmitHandler);
+
+formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
+
+const popUpCardNode = document.querySelector('.popup_edit_card');
+const handleAddCardButton = document.querySelector('.profile__add');
+const handleCloseCardButton = document.querySelector('.popup__close_edit_card');
+
+function togglePopUpCard() {
+  popUpCardNode.classList.toggle('popup_visible');
+}
+
+handleAddCardButton.addEventListener('click', togglePopUpCard);
+handleCloseCardButton.addEventListener('click', togglePopUpCard);
+
+renderInitialCards()
+handleSubmitCard()

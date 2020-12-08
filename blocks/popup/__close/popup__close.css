@@ -1,19 +1,14 @@
-.popup-profile__close {
-  position: absolute;
+.popup__close {
   background: url(../../../images/Close__button.svg);
-  right: 0px;
-  top: -39.62px;
   transform: rotate(-45deg);
   background-size: cover;
   border: none;
-  width: 26px;
-  height: 26px;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
   transition: .3s ease-out;
 }
 
-.popup-profile__close:hover {
+.popup__close:hover {
   opacity: 0.6;
 }
