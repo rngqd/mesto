@@ -58,13 +58,13 @@ function deleteTargetCard(evt) {
 function handleSubmitCard() {
   const formSubmitCard = document.querySelector('.popup__form_edit_card');
   formSubmitCard.addEventListener('submit', addCard);
-
 }
 
 function addCard(evt) {
   evt.preventDefault();
   const newElCard = composeCards({name: newCardName.value, link: newCardLink.value})
   CardsContainer.prepend(newElCard);
+  togglePopUpCard();
 }
 
 const popUpProfileNode = document.querySelector('.popup_edit_profile'); 
