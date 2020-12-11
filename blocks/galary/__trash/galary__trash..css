@@ -1,0 +1,16 @@
+.galary__trash{
+  background-image: url('../../../images/Trash.svg');
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s ease-out;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19.3px;
+}
+
+.galary__trash:hover {
+  opacity: 0.6;
+}

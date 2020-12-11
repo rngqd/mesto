@@ -2,25 +2,11 @@
   border: none;
   opacity: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  width: 238px;
   padding: 0;
-  padding-bottom: 13px;
-  margin-top: 75px;
   box-sizing: border-box;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-}
-
-.popup__profile:last-of-type {
-  margin-top: 30px;
-}
-
-@media screen and (min-width: 1024px) {
-  .popup__profile {
-    margin-top: 54px;
-    width: 358px;
-  }
 }

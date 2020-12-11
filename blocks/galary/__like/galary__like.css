@@ -1,7 +1,7 @@
 .galary__like {
-  background-image: url(../../../images/Like__button.svg);
-  width: 20.76px;
-  height: 18.13px;
+  background-image: url('../../../images/Like__button.svg');
+  width: 21px;
+  height: 17.5px;
   border: none;
   background-color: transparent;
   cursor: pointer;

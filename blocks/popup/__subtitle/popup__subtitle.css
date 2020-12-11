@@ -1,12 +1,10 @@
 .popup__subtitle {
-  text-align: center;
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
   line-height: 22px;
   color: #000000;
   margin: 0px;
-  padding-top: 25px;
 }
 
 @media screen and (min-width:1024px) { 
