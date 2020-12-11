@@ -37,11 +37,14 @@ function renderInitialCards() {
 function composeCards({name, link}) {
   const initialCard = templateElement.content.cloneNode(true);
   const cardName = initialCard.querySelector('.galary__text');
-  const cardLink = initialCard.querySelector('.galary__image');
+  const cardImage = initialCard.querySelector('.galary__image');
+  const cardLike = initialCard.querySelector('.galary__like');
+  const cardTrash = initialCard.querySelector('.galary__trash');
   cardName.textContent = name;
-  cardLink.src = link;
-  initialCard.querySelector('.galary__like').addEventListener('click', activateLikeButton);
-  initialCard.querySelector('.galary__trash').addEventListener('click',deleteTargetCard);
+  cardImage.src = link;
+  cardLike.addEventListener('click', activateLikeButton);
+  cardTrash.addEventListener('click', deleteTargetCard);
+  cardImage.addEventListener('click',addImagePopUp)
   return initialCard;
 }
 
@@ -100,6 +103,7 @@ formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
 const popUpCardNode = document.querySelector('.popup_edit_card');
 const handleAddCardButton = document.querySelector('.profile__add');
 const handleCloseCardButton = document.querySelector('.popup__close_edit_card');
+const handleClosePopUpImage = document.querySelector('.popup-image__close')
 
 function togglePopUpCard() {
   popUpCardNode.classList.toggle('popup_visible');
@@ -108,5 +112,19 @@ function togglePopUpCard() {
 handleAddCardButton.addEventListener('click', togglePopUpCard);
 handleCloseCardButton.addEventListener('click', togglePopUpCard);
 
+const popUpImageNode = document.querySelector('.popup-image');
+const popUpImagePhoto = document.querySelector('.popup-image__image');
+const popUpImageText = document.querySelector('.popup-image__text');
+
+function addImagePopUp(evt) {
+  popUpImageNode.classList.toggle('popup_visible')
+  popUpImagePhoto.src = evt.target.closest('.galary__image').src;
+  popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
+}
+handleClosePopUpImage.addEventListener('click',toggleImagePopUp)
+function toggleImagePopUp() {
+  popUpImageNode.classList.toggle('popup_visible')
+}
+toggleImagePopUp
 renderInitialCards()
 handleSubmitCard()

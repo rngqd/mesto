@@ -41,3 +41,8 @@
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__save/_edit/popup__save_edit_card.css);
 @import url(../blocks/popup/__save/_edit/popup__save_edit_profile.css);
+@import url(../blocks/popup-image/popup-image.css);
+@import url(../blocks/popup-image/__image/popup-image__image.css);
+@import url(../blocks/popup-image/__text/popup-image__text.css);
+@import url(../blocks/popup-image/__close/popup-image__close.css);
+@import url(../blocks/popup-image/__figure/popup-image__figure.css);
