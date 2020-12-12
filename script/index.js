@@ -24,14 +24,28 @@ const initialCards = [
     link: './images/train_station.jpg'
   }
 ]; 
-const templateElement = document.querySelector('.template')
-const CardsContainer = document.querySelector('.galary')
-const newCardName = document.querySelector('#card-name')
-const newCardLink = document.querySelector('#card-link')
+const templateElement = document.querySelector('.template');
+const cardsContainer = document.querySelector('.galary');
+const newCardName = document.querySelector('#card-name');
+const newCardLink = document.querySelector('#card-link');
+const formSubmitCard = document.querySelector('.popup__form_edit_card');
+const popUpImagePhoto = document.querySelector('.popup-image__image');
+const popUpImageText = document.querySelector('.popup-image__text');
 
-function renderInitialCards() {
-  const cardsNode = initialCards.map(composeCards);
-  CardsContainer.append(...cardsNode);
+function activateLikeButton(evt) {
+  const targetLike = evt.target;
+  targetLike.classList.toggle('galary__like_active');
+}
+
+function deleteTargetCard(evt) {
+  const targetCard = evt.target.closest('.galary__card');
+  targetCard.remove();
+}
+
+function addImagePopUp(evt) {
+  popUpImageNode.classList.toggle('popup_visible');
+  popUpImagePhoto.src = evt.target.closest('.galary__image').src;
+  popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
 }
 
 function composeCards({name, link}) {
@@ -44,30 +58,24 @@ function composeCards({name, link}) {
   cardImage.src = link;
   cardLike.addEventListener('click', activateLikeButton);
   cardTrash.addEventListener('click', deleteTargetCard);
-  cardImage.addEventListener('click',addImagePopUp)
+  cardImage.addEventListener('click', addImagePopUp);
   return initialCard;
 }
 
-function activateLikeButton(evt) {
-  const targetLike = evt.target
-  targetLike.classList.toggle('galary__like_active')
-}
-
-function deleteTargetCard(evt) {
-  const targetCard = evt.target.closest('.galary__card');
-  targetCard.remove();
-}
-
-function handleSubmitCard() {
-  const formSubmitCard = document.querySelector('.popup__form_edit_card');
-  formSubmitCard.addEventListener('submit', addCard);
+function renderInitialCards() {
+  const cardsNode = initialCards.map(composeCards);
+  cardsContainer.append(...cardsNode);
 }
 
 function addCard(evt) {
   evt.preventDefault();
-  const newElCard = composeCards({name: newCardName.value, link: newCardLink.value})
-  CardsContainer.prepend(newElCard);
+  const newElCard = composeCards({ name: newCardName.value, link: newCardLink.value });
+  cardsContainer.prepend(newElCard);
   togglePopUpCard();
+}
+
+function handleSubmitCard() {
+  formSubmitCard.addEventListener('submit', addCard);
 }
 
 const popUpProfileNode = document.querySelector('.popup_edit_profile'); 
@@ -84,47 +92,38 @@ function addPopUpProfile() {
   profileEditPost.value = profilePost.textContent;
   popUpProfileNode.classList.toggle('popup_visible');
 }
-
 handleEditProfileButton.addEventListener('click', addPopUpProfile);
+
 function closePopUpProfile() {
   popUpProfileNode.classList.toggle('popup_visible');
 }
-
 handleCloseProfileButton.addEventListener('click', closePopUpProfile);
+
 function profileFormSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = profileEditName.value;
   profilePost.textContent = profileEditPost.value;
   closePopUpProfile();
 }
-
 formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
 
 const popUpCardNode = document.querySelector('.popup_edit_card');
 const handleAddCardButton = document.querySelector('.profile__add');
 const handleCloseCardButton = document.querySelector('.popup__close_edit_card');
-const handleClosePopUpImage = document.querySelector('.popup-image__close')
+const handleClosePopUpImage = document.querySelector('.popup-image__close');
 
 function togglePopUpCard() {
   popUpCardNode.classList.toggle('popup_visible');
 }
-
 handleAddCardButton.addEventListener('click', togglePopUpCard);
 handleCloseCardButton.addEventListener('click', togglePopUpCard);
 
 const popUpImageNode = document.querySelector('.popup-image');
-const popUpImagePhoto = document.querySelector('.popup-image__image');
-const popUpImageText = document.querySelector('.popup-image__text');
 
-function addImagePopUp(evt) {
-  popUpImageNode.classList.toggle('popup_visible')
-  popUpImagePhoto.src = evt.target.closest('.galary__image').src;
-  popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
-}
-handleClosePopUpImage.addEventListener('click',toggleImagePopUp)
 function toggleImagePopUp() {
-  popUpImageNode.classList.toggle('popup_visible')
+  popUpImageNode.classList.toggle('popup_visible');
 }
-toggleImagePopUp
-renderInitialCards()
-handleSubmitCard()
+handleClosePopUpImage.addEventListener('click', toggleImagePopUp);
+
+renderInitialCards();
+handleSubmitCard();
