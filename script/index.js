@@ -31,6 +31,41 @@ const newCardLink = document.querySelector('#card-link');
 const formSubmitCard = document.querySelector('.popup__form_edit_card');
 const popUpImagePhoto = document.querySelector('.popup-image__image');
 const popUpImageText = document.querySelector('.popup-image__text');
+const popUpProfileNode = document.querySelector('.popup_edit_profile');
+const popUpCardNode = document.querySelector('.popup_edit_card');
+const popUpEditProfileButton = document.querySelector('.profile__edit');
+const profileName = document.querySelector('.profile__name'); 
+const profilePost = document.querySelector('.profile__post'); 
+const profileEditName = document.querySelector('#profile-name'); 
+const profileEditPost = document.querySelector('#profile-post'); 
+const formSubmitProfile = document.querySelector('.popup__form_edit_profile');
+const popUpImageNode = document.querySelector('.popup-image');
+const popUpAddCardButton = document.querySelector('.profile__add');
+const popUpProfileCloseButton = document.querySelector('.popup__close_edit_profile');
+const popUpCardCloseButton = document.querySelector('.popup__close_edit_card');
+const popUpImageCloseButton = document.querySelector('.popup-image__close');
+
+
+function addPopUp(popupNode) {
+  popupNode.classList.add('popup_visible')
+}
+function closePopUp(popupNode) {
+  popupNode.classList.remove('popup_visible');
+}
+
+function uploadPopUpProfile() { 
+  profileEditName.value = profileName.textContent;
+  profileEditPost.value = profilePost.textContent;
+  addPopUp(popUpProfileNode);
+}
+
+popUpEditProfileButton.addEventListener('click', uploadPopUpProfile);
+popUpImagePhoto.addEventListener('click', addImagePopUp);
+popUpAddCardButton.addEventListener('click', function () { addPopUp(popUpCardNode) });
+popUpProfileCloseButton.addEventListener('click', function() { closePopUp(popUpProfileNode)})
+popUpCardCloseButton.addEventListener('click', function() { closePopUp(popUpCardNode)})
+popUpImageCloseButton.addEventListener('click', function() { closePopUp(popUpImageNode)})
+
 
 function activateLikeButton(evt) {
   const targetLike = evt.target;
@@ -43,7 +78,7 @@ function deleteTargetCard(evt) {
 }
 
 function addImagePopUp(evt) {
-  popUpImageNode.classList.toggle('popup_visible');
+  addPopUp(popUpImageNode);
   popUpImagePhoto.src = evt.target.closest('.galary__image').src;
   popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
 }
@@ -71,59 +106,20 @@ function addCard(evt) {
   evt.preventDefault();
   const newElCard = composeCards({ name: newCardName.value, link: newCardLink.value });
   cardsContainer.prepend(newElCard);
-  togglePopUpCard();
+  
 }
 
 function handleSubmitCard() {
   formSubmitCard.addEventListener('submit', addCard);
+  closePopUp(popUpCardNode);
 }
-
-const popUpProfileNode = document.querySelector('.popup_edit_profile'); 
-const handleEditProfileButton = document.querySelector('.profile__edit'); 
-const handleCloseProfileButton = document.querySelector('.popup__close_edit_profile'); 
-const profileName = document.querySelector('.profile__name'); 
-const profilePost = document.querySelector('.profile__post'); 
-const profileEditName = document.querySelector('#profile-name'); 
-const profileEditPost = document.querySelector('#profile-post'); 
-const formSubmitProfile = document.querySelector('.popup__form_edit_profile');
-
-function addPopUpProfile() { 
-  profileEditName.value = profileName.textContent;
-  profileEditPost.value = profilePost.textContent;
-  popUpProfileNode.classList.toggle('popup_visible');
-}
-handleEditProfileButton.addEventListener('click', addPopUpProfile);
-
-function closePopUpProfile() {
-  popUpProfileNode.classList.toggle('popup_visible');
-}
-handleCloseProfileButton.addEventListener('click', closePopUpProfile);
 
 function profileFormSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = profileEditName.value;
   profilePost.textContent = profileEditPost.value;
-  closePopUpProfile();
 }
 formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
-
-const popUpCardNode = document.querySelector('.popup_edit_card');
-const handleAddCardButton = document.querySelector('.profile__add');
-const handleCloseCardButton = document.querySelector('.popup__close_edit_card');
-const handleClosePopUpImage = document.querySelector('.popup-image__close');
-
-function togglePopUpCard() {
-  popUpCardNode.classList.toggle('popup_visible');
-}
-handleAddCardButton.addEventListener('click', togglePopUpCard);
-handleCloseCardButton.addEventListener('click', togglePopUpCard);
-
-const popUpImageNode = document.querySelector('.popup-image');
-
-function toggleImagePopUp() {
-  popUpImageNode.classList.toggle('popup_visible');
-}
-handleClosePopUpImage.addEventListener('click', toggleImagePopUp);
 
 renderInitialCards();
 handleSubmitCard();
