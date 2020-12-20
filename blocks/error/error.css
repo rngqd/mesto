@@ -1,0 +1,17 @@
+.error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  max-width: 238px;
+  align-self:flex-start;
+  margin-left: 22px;
+}
+
+@media screen and (min-width: 1024px) {
+  .error {
+    max-width: 358px;
+    margin-left: 36px;
+  }
+}
