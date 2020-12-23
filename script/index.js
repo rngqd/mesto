@@ -1,29 +1,18 @@
 const initialCards = [
-  {
-    name: 'Курган',
-    link: './images/kurgan.jpg'
-  },
-  {
-    name: 'Центр города',
-    link: './images/centr.jpg'
-  },
-  {
-    name: 'Подвесной мост',
-    link: './images/most.jpg'
-  },
-  {
-    name: 'Площадь партизан',
-    link: './images/partizan.jpg'
-  },
-  {
-    name: 'Самолёт',
-    link: './images/plane.jpg'
-  },
-  {
-    name: 'Вокзал',
-    link: './images/train_station.jpg'
-  }
+  {name: 'Курган',
+  link: './images/kurgan.jpg'},
+  {name: 'Центр города',
+  link: './images/centr.jpg'},
+  {name: 'Подвесной мост',
+  link: './images/most.jpg'},
+  {name: 'Площадь партизан',
+  link: './images/partizan.jpg'},
+  {name: 'Самолёт',
+  link: './images/plane.jpg'},
+  {name: 'Вокзал',
+  link: './images/train_station.jpg'}
 ]; 
+
 const templateElement = document.querySelector('.template');
 const cardsContainer = document.querySelector('.galary');
 const newCardName = document.querySelector('#card-name');
@@ -46,11 +35,26 @@ const popUpCardCloseButton = document.querySelector('.popup__close_edit_card');
 const popUpImageCloseButton = document.querySelector('.popup-image__close');
 
 
-function addPopUp(popupNode) {
-  popupNode.classList.add('popup_visible')
-}
+
 function closePopUp(popupNode) {
+  document.removeEventListener('keyup', function (evt) {
+    if (evt.key === 'Escape' && popupNode != null) {
+      closePopUp(popupNode)
+    }
+  })
   popupNode.classList.remove('popup_visible');
+}
+
+function addPopUp(popupNode) {
+  popupNode.classList.add('popup_visible');
+  document.addEventListener('keyup', function (evt) {
+    if (evt.key === 'Escape' && popupNode != null) {
+      closePopUp(popupNode)
+    }
+  })
+  popupNode.addEventListener('click', function (evt){
+    closePopUp (evt.target)
+  })
 }
 
 function uploadPopUpProfile() { 
@@ -106,7 +110,6 @@ function addCard(evt) {
   evt.preventDefault();
   const newElCard = composeCards({ name: newCardName.value, link: newCardLink.value });
   cardsContainer.prepend(newElCard);
-  
 }
 
 function handleSubmitCard() {
@@ -118,6 +121,7 @@ function profileFormSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = profileEditName.value;
   profilePost.textContent = profileEditPost.value;
+  closePopUp(popUpCardNode);
 }
 formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
 

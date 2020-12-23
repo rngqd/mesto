@@ -7,6 +7,7 @@
   max-width: 238px;
   align-self:flex-start;
   margin-left: 22px;
+  height: 12px;
 }
 
 @media screen and (min-width: 1024px) {
