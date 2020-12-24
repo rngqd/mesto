@@ -1,18 +1,3 @@
-const initialCards = [
-  {name: 'Курган',
-  link: './images/kurgan.jpg'},
-  {name: 'Центр города',
-  link: './images/centr.jpg'},
-  {name: 'Подвесной мост',
-  link: './images/most.jpg'},
-  {name: 'Площадь партизан',
-  link: './images/partizan.jpg'},
-  {name: 'Самолёт',
-  link: './images/plane.jpg'},
-  {name: 'Вокзал',
-  link: './images/train_station.jpg'}
-]; 
-
 const templateElement = document.querySelector('.template');
 const cardsContainer = document.querySelector('.galary');
 const newCardName = document.querySelector('#card-name');
@@ -34,27 +19,24 @@ const popUpProfileCloseButton = document.querySelector('.popup__close_edit_profi
 const popUpCardCloseButton = document.querySelector('.popup__close_edit_card');
 const popUpImageCloseButton = document.querySelector('.popup-image__close');
 
-
+function closePopUpByEsc(evt) {
+  const activePopUP = document.querySelector('.popup_visible')
+    if (evt.key === 'Escape' && activePopUP != null) {
+      closePopUp(activePopUP)
+    }
+}
 
 function closePopUp(popupNode) {
-  document.removeEventListener('keyup', function (evt) {
-    if (evt.key === 'Escape' && popupNode != null) {
-      closePopUp(popupNode)
-    }
-  })
   popupNode.classList.remove('popup_visible');
+  document.removeEventListener('keyup',closePopUpByEsc)
 }
 
 function addPopUp(popupNode) {
   popupNode.classList.add('popup_visible');
-  document.addEventListener('keyup', function (evt) {
-    if (evt.key === 'Escape' && popupNode != null) {
-      closePopUp(popupNode)
-    }
-  })
   popupNode.addEventListener('click', function (evt){
     closePopUp (evt.target)
   })
+  document.addEventListener('keyup',closePopUpByEsc)
 }
 
 function uploadPopUpProfile() { 
@@ -114,16 +96,18 @@ function addCard(evt) {
 
 function handleSubmitCard() {
   formSubmitCard.addEventListener('submit', addCard);
-  closePopUp(popUpCardNode);
+  closePopUp(popUpCardNode); 
+  formSubmitCard.reset();
 }
+formSubmitCard.addEventListener('submit',handleSubmitCard)
 
-function profileFormSubmitHandler(evt) {
+function handleSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = profileEditName.value;
   profilePost.textContent = profileEditPost.value;
-  closePopUp(popUpCardNode);
+  closePopUp(popUpProfileNode);
 }
-formSubmitProfile.addEventListener('submit', profileFormSubmitHandler);
+formSubmitProfile.addEventListener('submit', handleSubmitProfile);
 
 renderInitialCards();
 handleSubmitCard();
