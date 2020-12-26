@@ -1,5 +1,3 @@
-
-
 function showError(form, input, config) {
   const error = form.querySelector(`#${input.id}-error`);
   error.textContent = input.validationMessage;
@@ -55,7 +53,6 @@ function enableValidation(config) {
     setButtonState(submitButton, form.checkValidity(), config);
   })
 }
-
 
 const validationConfig = {
   formSelector: '.popup__form',

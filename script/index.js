@@ -18,6 +18,7 @@ const popUpAddCardButton = document.querySelector('.profile__add');
 const popUpProfileCloseButton = document.querySelector('.popup__close_edit_profile');
 const popUpCardCloseButton = document.querySelector('.popup__close_edit_card');
 const popUpImageCloseButton = document.querySelector('.popup-image__close');
+const popUpCardSaveButton = document.querySelector('.popup__save_edit_card');
 
 function closePopUpByEsc(evt) {
   const activePopUP = document.querySelector('.popup_visible')
@@ -32,6 +33,7 @@ function closePopUp(popupNode) {
 }
 
 function addPopUp(popupNode) {
+  setButtonState(popUpCardSaveButton, formSubmitCard.checkValidity(), validationConfig);
   popupNode.classList.add('popup_visible');
   popupNode.addEventListener('click', function (evt){
     closePopUp (evt.target)
@@ -88,14 +90,14 @@ function renderInitialCards() {
   cardsContainer.append(...cardsNode);
 }
 
-function addCard(evt) {
-  evt.preventDefault();
+function addCard() {
   const newElCard = composeCards({ name: newCardName.value, link: newCardLink.value });
   cardsContainer.prepend(newElCard);
 }
 
-function handleSubmitCard() {
-  formSubmitCard.addEventListener('submit', addCard);
+function handleSubmitCard(evt) {
+  evt.preventDefault();
+  addCard();
   closePopUp(popUpCardNode); 
   formSubmitCard.reset();
 }
@@ -110,4 +112,5 @@ function handleSubmitProfile(evt) {
 formSubmitProfile.addEventListener('submit', handleSubmitProfile);
 
 renderInitialCards();
-handleSubmitCard();
+
+//У вас очень подробные замечания, выражаю благодарность)
