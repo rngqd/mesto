@@ -1,24 +1,26 @@
-const templateElement = document.querySelector('.template');
-const cardsContainer = document.querySelector('.galary');
-const newCardName = document.querySelector('#card-name');
-const newCardLink = document.querySelector('#card-link');
+const profileName = document.querySelector('.profile__name'); 
+const profilePost = document.querySelector('.profile__post'); 
 const formSubmitCard = document.querySelector('.popup__form_edit_card');
+const formSubmitProfile = document.querySelector('.popup__form_edit_profile');
 const popUpImagePhoto = document.querySelector('.popup-image__image');
 const popUpImageText = document.querySelector('.popup-image__text');
 const popUpProfileNode = document.querySelector('.popup_edit_profile');
 const popUpCardNode = document.querySelector('.popup_edit_card');
-const popUpEditProfileButton = document.querySelector('.profile__edit');
-const profileName = document.querySelector('.profile__name'); 
-const profilePost = document.querySelector('.profile__post'); 
-const profileEditName = document.querySelector('#profile-name'); 
-const profileEditPost = document.querySelector('#profile-post'); 
-const formSubmitProfile = document.querySelector('.popup__form_edit_profile');
 const popUpImageNode = document.querySelector('.popup-image');
-const popUpAddCardButton = document.querySelector('.profile__add');
 const popUpProfileCloseButton = document.querySelector('.popup__close_edit_profile');
 const popUpCardCloseButton = document.querySelector('.popup__close_edit_card');
 const popUpImageCloseButton = document.querySelector('.popup-image__close');
+const popUpEditProfileButton = document.querySelector('.profile__edit');
+const popUpAddCardButton = document.querySelector('.profile__add');
 const popUpCardSaveButton = document.querySelector('.popup__save_edit_card');
+const popUpCloseButtom = document.querySelectorAll('.popup__close')
+
+const templateElement = document.querySelector('.template');
+const cardsContainer = document.querySelector('.galary');
+const newCardName = document.querySelector('#card-name');
+const newCardLink = document.querySelector('#card-link');
+const profileEditName = document.querySelector('#profile-name'); 
+const profileEditPost = document.querySelector('#profile-post');
 
 function closePopUpByEsc(evt) {
   const activePopUP = document.querySelector('.popup_visible')
@@ -47,13 +49,33 @@ function uploadPopUpProfile() {
   addPopUp(popUpProfileNode);
 }
 
+function handleSubmitCard(evt) {
+  evt.preventDefault();
+  addCard();
+  closePopUp(popUpCardNode); 
+  formSubmitCard.reset();
+}
+formSubmitCard.addEventListener('submit',handleSubmitCard)
+
+function handleSubmitProfile(evt) {
+  evt.preventDefault();
+  profileName.textContent = profileEditName.value;
+  profilePost.textContent = profileEditPost.value;
+  closePopUp(popUpProfileNode);
+}
+
+function addImagePopUp(evt) {
+  addPopUp(popUpImageNode);
+  popUpImagePhoto.src = evt.target.closest('.galary__image').src;
+  popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
+}
+formSubmitProfile.addEventListener('submit', handleSubmitProfile);
 popUpEditProfileButton.addEventListener('click', uploadPopUpProfile);
 popUpImagePhoto.addEventListener('click', addImagePopUp);
 popUpAddCardButton.addEventListener('click', function () { addPopUp(popUpCardNode) });
-popUpProfileCloseButton.addEventListener('click', function() { closePopUp(popUpProfileNode)})
-popUpCardCloseButton.addEventListener('click', function() { closePopUp(popUpCardNode)})
-popUpImageCloseButton.addEventListener('click', function() { closePopUp(popUpImageNode)})
-
+popUpProfileCloseButton.addEventListener('click', function () { closePopUp(popUpProfileNode) });
+popUpCardCloseButton.addEventListener('click', function () { closePopUp(popUpCardNode) });
+popUpImageCloseButton.addEventListener('click', function () { closePopUp(popUpImageNode) });
 
 function activateLikeButton(evt) {
   const targetLike = evt.target;
@@ -63,12 +85,6 @@ function activateLikeButton(evt) {
 function deleteTargetCard(evt) {
   const targetCard = evt.target.closest('.galary__card');
   targetCard.remove();
-}
-
-function addImagePopUp(evt) {
-  addPopUp(popUpImageNode);
-  popUpImagePhoto.src = evt.target.closest('.galary__image').src;
-  popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
 }
 
 function composeCards({name, link}) {
@@ -95,22 +111,4 @@ function addCard() {
   cardsContainer.prepend(newElCard);
 }
 
-function handleSubmitCard(evt) {
-  evt.preventDefault();
-  addCard();
-  closePopUp(popUpCardNode); 
-  formSubmitCard.reset();
-}
-formSubmitCard.addEventListener('submit',handleSubmitCard)
-
-function handleSubmitProfile(evt) {
-  evt.preventDefault();
-  profileName.textContent = profileEditName.value;
-  profilePost.textContent = profileEditPost.value;
-  closePopUp(popUpProfileNode);
-}
-formSubmitProfile.addEventListener('submit', handleSubmitProfile);
-
 renderInitialCards();
-
-//У вас очень подробные замечания, выражаю благодарность)
