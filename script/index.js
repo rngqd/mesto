@@ -1,3 +1,6 @@
+import { initialCards } from './initialCards.js';
+import {Card} from './cards.js'
+
 const profileName = document.querySelector('.profile__name'); 
 const profilePost = document.querySelector('.profile__post'); 
 const formSubmitCard = document.querySelector('.popup__form_edit_card');
@@ -13,8 +16,6 @@ const popUpImageCloseButton = document.querySelector('.popup-image__close');
 const popUpEditProfileButton = document.querySelector('.profile__edit');
 const popUpAddCardButton = document.querySelector('.profile__add');
 const popUpCardSaveButton = document.querySelector('.popup__save_edit_card');
-const popUpCloseButtom = document.querySelectorAll('.popup__close')
-
 const templateElement = document.querySelector('.template');
 const cardsContainer = document.querySelector('.galary');
 const newCardName = document.querySelector('#card-name');
@@ -51,7 +52,7 @@ function uploadPopUpProfile() {
 
 function handleSubmitCard(evt) {
   evt.preventDefault();
-  addCard();
+  addCardByClass();
   closePopUp(popUpCardNode); 
   formSubmitCard.reset();
 }
@@ -64,51 +65,34 @@ function handleSubmitProfile(evt) {
   closePopUp(popUpProfileNode);
 }
 
-function addImagePopUp(evt) {
+export function addImagePopUp(evt) {
   addPopUp(popUpImageNode);
   popUpImagePhoto.src = evt.target.closest('.galary__image').src;
   popUpImageText.textContent = evt.target.closest('.galary__card').textContent;
 }
+
 formSubmitProfile.addEventListener('submit', handleSubmitProfile);
 popUpEditProfileButton.addEventListener('click', uploadPopUpProfile);
-popUpImagePhoto.addEventListener('click', addImagePopUp);
+popUpImagePhoto.addEventListener('click', function () {console.log('active')});
 popUpAddCardButton.addEventListener('click', function () { addPopUp(popUpCardNode) });
 popUpProfileCloseButton.addEventListener('click', function () { closePopUp(popUpProfileNode) });
 popUpCardCloseButton.addEventListener('click', function () { closePopUp(popUpCardNode) });
 popUpImageCloseButton.addEventListener('click', function () { closePopUp(popUpImageNode) });
 
-function activateLikeButton(evt) {
-  const targetLike = evt.target;
-  targetLike.classList.toggle('galary__like_active');
+function renderInitialCardsByClass() {
+  const cardClasses = initialCards.map(item => new Card(item.name, item.link));
+  const cardElements = cardClasses.map((card) => {
+    const cardElement = card.generateCard();
+    cardElement.querySelector('.galary__image').addEventListener('click', addImagePopUp);
+    return cardElement;
+  });
+  cardsContainer.append(...cardElements);
 }
+function addCardByClass() {
+    const newCard = new Card (newCardName.value, newCardLink.value);
+    const newCardElement = newCard.generateCard();
+    newCardElement.querySelector('.galary__image').addEventListener('click', addImagePopUp);
+    cardsContainer.prepend(newCardElement);
+  }
 
-function deleteTargetCard(evt) {
-  const targetCard = evt.target.closest('.galary__card');
-  targetCard.remove();
-}
-
-function composeCards({name, link}) {
-  const initialCard = templateElement.content.cloneNode(true);
-  const cardName = initialCard.querySelector('.galary__text');
-  const cardImage = initialCard.querySelector('.galary__image');
-  const cardLike = initialCard.querySelector('.galary__like');
-  const cardTrash = initialCard.querySelector('.galary__trash');
-  cardName.textContent = name;
-  cardImage.src = link;
-  cardLike.addEventListener('click', activateLikeButton);
-  cardTrash.addEventListener('click', deleteTargetCard);
-  cardImage.addEventListener('click', addImagePopUp);
-  return initialCard;
-}
-
-function renderInitialCards() {
-  const cardsNode = initialCards.map(composeCards);
-  cardsContainer.append(...cardsNode);
-}
-
-function addCard() {
-  const newElCard = composeCards({ name: newCardName.value, link: newCardLink.value });
-  cardsContainer.prepend(newElCard);
-}
-
-renderInitialCards();
+renderInitialCardsByClass();
