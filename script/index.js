@@ -1,5 +1,7 @@
 import { initialCards } from './initialCards.js';
-import {Card} from './cards.js'
+import { Card } from './cards.js'
+import { validationConfig } from './validationConfig.js'
+import { FormValidation } from './formValidation.js'
 
 const profileName = document.querySelector('.profile__name'); 
 const profilePost = document.querySelector('.profile__post'); 
@@ -36,7 +38,6 @@ function closePopUp(popupNode) {
 }
 
 function addPopUp(popupNode) {
-  setButtonState(popUpCardSaveButton, formSubmitCard.checkValidity(), validationConfig);
   popupNode.classList.add('popup_visible');
   popupNode.addEventListener('click', function (evt){
     closePopUp (evt.target)
@@ -96,3 +97,8 @@ function addCardByClass() {
   }
 
 renderInitialCardsByClass();
+
+const formCardValidation = new FormValidation(formSubmitCard, validationConfig)
+formCardValidation.enableValidation();
+const formProfileValidation = new FormValidation(formSubmitProfile, validationConfig);
+formProfileValidation.enableValidation();
