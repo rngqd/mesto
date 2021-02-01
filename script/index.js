@@ -2,7 +2,8 @@ import { initialCards } from "./initialCards.js";
 import { Card } from "./cards.js";
 import { validationConfig } from "./validationConfig.js";
 import { FormValidation } from "./formValidation.js";
-
+import Section from "./Section.js";
+import Popup from "./popup.js";
 const profileName = document.querySelector(".profile__name");
 const profilePost = document.querySelector(".profile__post");
 const formSubmitCard = document.querySelector(".popup__form_edit_card");
@@ -35,22 +36,19 @@ function closePopUpByEsc(evt) {
 function closePopUp(popupNode) {
 	popupNode.classList.remove("popup_visible");
 	document.removeEventListener("keyup", closePopUpByEsc);
-	document.removeEventListener("click", function () {
-		closePopUpByOverlayClick(popupNode);
-	});
+	document.removeEventListener("click", closePopUpByOverlayClick);
 }
 
-function closePopUpByOverlayClick(popupNode) {
-	popupNode.addEventListener("click", function (evt) {
+function closePopUpByOverlayClick(evt) {
+	const activePopUP = document.querySelector(".popup_visible");
+	activePopUP.addEventListener("click", function (evt) {
 		closePopUp(evt.target);
 	});
 }
 
 function openPopUp(popupNode) {
 	popupNode.classList.add("popup_visible");
-	document.addEventListener("click", function () {
-		closePopUpByOverlayClick(popupNode);
-	});
+	document.addEventListener("click", closePopUpByOverlayClick);
 	document.addEventListener("keyup", closePopUpByEsc);
 }
 
@@ -83,7 +81,7 @@ export function addImagePopUp(name, link) {
 }
 
 formSubmitProfile.addEventListener("submit", handleSubmitProfile);
-popUpEditProfileButton.addEventListener("click", uploadPopUpProfile);
+// popUpEditProfileButton.addEventListener("click", uploadPopUpProfile);
 popUpImagePhoto.addEventListener("click", function () {
 	console.log("active");
 });
@@ -100,21 +98,34 @@ popUpImageCloseButton.addEventListener("click", function () {
 	closePopUp(popUpImageNode);
 });
 
-function renderInitialCardsByClass() {
-	initialCards.map((item) => {
-		addCardByClass(item.name, item.link, templateCardElement);
-	});
-}
-
 function addCardByClass(newCardName, newCardLink, templateCardElement) {
 	const newCard = new Card(newCardName, newCardLink, templateCardElement);
 	const newCardElement = newCard.generateCard();
 	cardsContainer.prepend(newCardElement);
 }
 
-renderInitialCardsByClass();
-
 const formCardValidation = new FormValidation(formSubmitCard, validationConfig);
 formCardValidation.enableValidation();
 const formProfileValidation = new FormValidation(formSubmitProfile, validationConfig);
 formProfileValidation.enableValidation();
+
+const initialCardSection = new Section(
+	{
+		items: initialCards,
+		renderer: (item) => {
+			const card = new Card(item, templateCardElement);
+			const newCardElement = card.generateCard();
+			initialCardSection.addItem(newCardElement);
+		},
+	},
+	cardsContainer
+);
+initialCardSection.renderItem();
+
+function openEditPopup() {
+	const editPopup = new Popup(".popup_edit_profile");
+	editPopup.setEventListeners();
+	editPopup.open();
+}
+
+popUpEditProfileButton.addEventListener("click", openEditPopup);
