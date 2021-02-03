@@ -1,4 +1,6 @@
-import { addImagePopUp } from "./index.js";
+import {
+	handleCardClick
+} from "./index.js"; 
 export class Card {
 	constructor({ name, link }, templateElement) {
 		this._name = name;
@@ -27,7 +29,7 @@ export class Card {
 			this._activateTrashButton();
 		});
 		this._element.querySelector(".galary__image").addEventListener("click", () => {
-			addImagePopUp(this._text, this._link);
+			handleCardClick(this._name, this._link);
 		});
 	}
 

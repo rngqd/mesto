@@ -9,20 +9,21 @@
 </head>
 
 <body class="page page_type_narrow">
-  <header class="header"> 
+  <header class="header">
     <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта">
   </header>
   <main class="main">
     <section class="profile section section_type_narrow">
       <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
       <div class="profile__about">
-      <div class=" profile__about profile__about_type_row">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__edit"></button>
+        <div class=" profile__about profile__about_type_row">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit"></button>
+        </div>
+        <p class="profile__post">Исследователь океана</p>
       </div>
-      <p class="profile__post">Исследователь океана</p>
-    </div>
-      <button type="button" class="profile__add" id="data"><img src="./images/Add_button.svg" alt="Кнопка добавления"></button>
+      <button type="button" class="profile__add" id="data"><img src="./images/Add_button.svg"
+          alt="Кнопка добавления"></button>
     </section>
 
     <section class="galary section section_type_narrow">
@@ -33,34 +34,40 @@
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
   <div class="popup popup_edit_profile">
-    <div class="popup__window popup__window_edit_profile"> 
+    <div class="popup__window popup__window_edit_profile">
       <button type="button" class="popup__close popup__close_edit_profile"></button>
       <h2 class="popup__subtitle popup__subtitle_edit_profile">Редактировать профиль</h2>
       <form class="popup__form popup__form_edit_profile" name="popup-profile" novalidate>
-        <input type="text" name="name" id="profile-name" placeholder="Имя пользователя" class="popup__profile popup__profile_edit_profile popup__profile_type_name" value="" minlength="2" maxlength="40" required>
+        <input type="text" name="name" id="profile-name" placeholder="Имя пользователя"
+          class="popup__profile popup__profile_edit_profile popup__profile_type_name" value="" minlength="2"
+          maxlength="40" required>
         <span class="error" id="profile-name-error"></span>
-        <input type="text" name="post" id="profile-post" placeholder="Должность" class="popup__profile popup__profile_edit_profile popup__profile_type_post" value="" minlength="2" maxlength="200" required>
+        <input type="text" name="post" id="profile-post" placeholder="Должность"
+          class="popup__profile popup__profile_edit_profile popup__profile_type_post" value="" minlength="2"
+          maxlength="200" required>
         <span class="error" id="profile-post-error"></span>
         <button type="submit" class="popup__save popup__save_edit_profile">Сохранить</button>
       </form>
     </div>
   </div>
-  <div class="popup popup_edit_card"> 
-    <div class="popup__window popup__window_edit_card"> 
-      <button type="button" class="popup__close popup__close_edit_card"></button> 
-      <h2 class="popup__subtitle popup__subtitle_edit_card">Новое место</h2> 
+  <div class="popup popup_edit_card">
+    <div class="popup__window popup__window_edit_card">
+      <button type="button" class="popup__close popup__close_edit_card"></button>
+      <h2 class="popup__subtitle popup__subtitle_edit_card">Новое место</h2>
       <form class="popup__form popup__form_edit_card" name="popup-cards" novalidate>
-        <input type="text" name="name" id="card-name" class="popup__profile popup__profile_edit_card" value="" placeholder="Название" minlength="1" maxlength="30" required> 
+        <input type="text" name="name" id="card-name" class="popup__profile popup__profile_edit_card" value=""
+          placeholder="Название" minlength="1" maxlength="30" required>
         <span class="error" id="card-name-error"></span>
-        <input type="url" name="post" id="card-link" class="popup__profile popup__profile_edit_card" value="" placeholder="Ссылка на картинку" required> 
+        <input type="url" name="post" id="card-link" class="popup__profile popup__profile_edit_card" value=""
+          placeholder="Ссылка на картинку" required>
         <span class="error" id="card-link-error"></span>
-        <button type="submit" class="popup__save popup__save_edit_card">Сохранить</button> 
+        <button type="submit" class="popup__save popup__save_edit_card">Сохранить</button>
       </form>
     </div>
   </div>
 
 
-  <div class ="popup popup-image">
+  <div class="popup-image popup">
     <figure class="popup-image__figure">
       <button type="button" class="popup__close popup-image__close"></button>
       <img src="./images/kurgan.jpg" alt="Картинка из попапа" class="popup-image__image">
@@ -69,7 +76,7 @@
   </div>
 
 
-  <template class ="template">
+  <template class="template">
     <div class="galary__card">
       <img class="galary__image" src="#" alt="Добавленное изображение">
       <button type="button" class="galary__trash"></button>
@@ -79,15 +86,17 @@
       </div>
     </div>
   </template>
-  <script type ="module" src="./script/Section.js"></script>
+  <script type="module" src="./script/Section.js"></script>
   <script type="module" src="./script/index.js"></script>
   <script type="module" src="script/initialCards.js"></script>
   <script type="module" src="./script/cards.js"></script>
   <script type="module" src="./script/formValidation.js"></script>
-  <script type ="module" src="./script/validationConfig.js"></script>
-  <script type ="module" src="./script/popup.js"></script>
+  <script type="module" src="./script/validationConfig.js"></script>
+  <script type="module" src="./script/popup.js"></script>
+  <script type="module" src="./script/PopupWithImage.js"></script>
 
-  
+
+
 </body>
 
 </html>
