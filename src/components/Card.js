@@ -1,4 +1,4 @@
- export class Card {
+export default class Card {
 	constructor({ name, link }, templateElement, handleCardClick) {
 		this._name = name;
 		this._link = link;
@@ -33,8 +33,10 @@
 
 	generateCard() {
 		this._element = this._getTemplate();
+		this.cardImage = this._element.querySelector(".galary__image");
 		this._setEventListener();
-		this._element.querySelector(".galary__image").src = this._link;
+		this.cardImage.src = this._link;
+		this.cardImage.alt = this._name;
 		this._element.querySelector(".galary__text").textContent = this._name;
 		return this._element;
 	}
