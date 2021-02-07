@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
 <body class="page page_type_narrow">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип сайта">
   </header>
   <main class="main">
     <section class="profile section section_type_narrow">
-      <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+      <img src='<%=require("./images/avatar.jpg")%>' alt="Аватар" class="profile__avatar">
       <div class="profile__about">
         <div class=" profile__about profile__about_type_row">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -22,7 +21,7 @@
         </div>
         <p class="profile__post">Исследователь океана</p>
       </div>
-      <button type="button" class="profile__add" id="data"><img src="./images/Add_button.svg"
+      <button type="button" class="profile__add" id="data"><img src= '<%=require("./images/Add_button.svg")%>'
           alt="Кнопка добавления"></button>
     </section>
 
@@ -87,16 +86,6 @@
       </div>
     </div>
   </template>
-  <script type="module" src="./script/userInfo.js"></script>
-  <script type="module" src="./script/Section.js"></script>
-  <script type="module" src="./script/index.js"></script>
-  <script type="module" src="script/initialCards.js"></script>
-  <script type="module" src="./script/cards.js"></script>
-  <script type="module" src="./script/formValidation.js"></script>
-  <script type="module" src="./script/validationConfig.js"></script>
-  <script type="module" src="./script/popup.js"></script>
-  <script type="module" src="./script/PopupWithImage.js"></script>
-  <script type="module" src="./script/popupWithForms.js"></script>
 </body>
 
 </html>

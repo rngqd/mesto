@@ -1,11 +1,12 @@
-import { initialCards } from "./initialCards.js";
-import { Card } from "./cards.js";
-import { validationConfig } from "./validationConfig.js";
-import { FormValidation } from "./formValidation.js";
-import Section from "./Section.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForms from "./popupWithForms.js";
-import UserInfo from './userInfo.js'
+import './pages/index.css'
+import { initialCards } from "./script/initialCards.js";
+import { Card } from "./script/cards.js";
+import { validationConfig } from "./script/validationConfig.js";
+import { FormValidation } from "./script/formValidation.js";
+import Section from "./script/Section.js";
+import PopupWithImage from "./script/PopupWithImage.js";
+import PopupWithForms from "./script/popupWithForms.js";
+import UserInfo from "./script/userInfo.js";
 const nameSelector = ".profile__name";
 const postSelector = ".profile__post";
 const formSubmitCard = document.querySelector(".popup__form_edit_card");
@@ -51,7 +52,6 @@ const initialCardSection = new Section(
 );
 initialCardSection.renderItem();
 
-
 //Создаём функцию для добавления логики открытия попапа карточки в классе Card
 export function handleCardClick(cardName, cardLink) {
 	const imagePopup = new PopupWithImage(".popup-image");
@@ -59,7 +59,7 @@ export function handleCardClick(cardName, cardLink) {
 	imagePopup.openWithImage(cardName, cardLink);
 }
 
-const userInfo = new UserInfo(nameSelector, postSelector)
+const userInfo = new UserInfo(nameSelector, postSelector);
 
 //Создаём попап профиля, добавляем для него функциональность
 const profilePopup = new PopupWithForms(popUpProfileSelector, {
