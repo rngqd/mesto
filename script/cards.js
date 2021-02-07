@@ -1,11 +1,9 @@
-import {
-	handleCardClick
-} from "./index.js"; 
-export class Card {
-	constructor({ name, link }, templateElement) {
+ export class Card {
+	constructor({ name, link }, templateElement, handleCardClick) {
 		this._name = name;
 		this._link = link;
 		this._templateElement = templateElement;
+		this._handleCardClick = handleCardClick;
 	}
 
 	_getTemplate() {
@@ -29,7 +27,7 @@ export class Card {
 			this._activateTrashButton();
 		});
 		this._element.querySelector(".galary__image").addEventListener("click", () => {
-			handleCardClick(this._name, this._link);
+			this._handleCardClick(this._name, this._link);
 		});
 	}
 
