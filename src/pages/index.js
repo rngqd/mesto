@@ -51,9 +51,9 @@ initialCardSection.renderItem();
 
 //Создаём функцию для добавления логики открытия попапа карточки в классе Card
 const imagePopup = new PopupWithImage(".popup-image");
+imagePopup.setEventListeners();
 
 export function handleCardClick(cardName, cardLink) {
-	imagePopup.setEventListeners();
 	imagePopup.openWithImage(cardName, cardLink);
 }
 

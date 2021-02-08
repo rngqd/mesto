@@ -26,7 +26,7 @@ export default class Card {
 		this._element.querySelector(".galary__trash").addEventListener("click", () => {
 			this._activateTrashButton();
 		});
-		this._element.querySelector(".galary__image").addEventListener("click", () => {
+		this.cardImage.addEventListener("click", () => {
 			this._handleCardClick(this._name, this._link);
 		});
 	}
