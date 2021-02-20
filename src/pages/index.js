@@ -69,7 +69,6 @@ function createCard({ name, link, likes, owner, _id }) {
 		handleCardClick,
 		() => {
 			confirmDeletePopup.open(removeCard(card));
-			confirmDeletePopup.setEventListeners();
 		},
 		() => {
 			api.addLike(card.returnCardId()).then((res) => {
