@@ -13,15 +13,18 @@
   </header>
   <main class="main">
     <section class="profile section section_type_narrow">
-      <img src='<%=require("./images/avatar.jpg")%>' alt="Аватар" class="profile__avatar">
+      <div class="profile__avatar-container"><img src='#' alt="Аватар"
+          class="profile__avatar">
+        <button class="profile__avatar-overlay"></button>
+      </div>
       <div class="profile__about">
         <div class=" profile__about profile__about_type_row">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" class="profile__edit"></button>
         </div>
-        <p class="profile__post">Исследователь океана</p>
+        <p class="profile__post"></p>
       </div>
-      <button type="button" class="profile__add" id="data"><img src= '<%=require("./images/Add_button.svg")%>'
+      <button type="button" class="profile__add" id="data"><img src='<%=require("./images/Add_button.svg")%>'
           alt="Кнопка добавления"></button>
     </section>
 
@@ -32,6 +35,7 @@
   <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
+
   <div class="popup popup_edit_profile">
     <div class="popup__window popup__window_edit_profile">
       <button type="button" class="popup__close popup__close_edit_profile"></button>
@@ -49,6 +53,7 @@
       </form>
     </div>
   </div>
+
   <div class="popup popup_edit_card">
     <div class="popup__window popup__window_edit_card">
       <button type="button" class="popup__close popup__close_edit_card"></button>
@@ -65,7 +70,13 @@
     </div>
   </div>
 
-
+  <div class="popup popup_delete_card">
+    <div class="popup__window popup__window_delete_card">
+      <button type="button" class="popup__close popup__close_delete_card"></button>
+      <h2 class="popup__subtitle popup__subtitle_delete_card">Вы уверены?</h2>
+      <button type="button" class="popup__save popup__save_delete_card">Да</button>
+    </div>
+  </div>
 
   <div class="popup-image popup">
     <figure class="popup-image__figure">
@@ -75,6 +86,18 @@
     </figure>
   </div>
 
+  <div class="popup popup_edit_avatar">
+    <div class="popup__window popup__window_edit_avatar">
+      <button type="button" class="popup__close popup__close_edit_avatar"></button>
+      <h2 class="popup__subtitle popup__subtitle_edit_avatar">Обновить аватар</h2>
+      <form class="popup__form popup__form_edit_avatar" name="popup-avatar" novalidate>
+        <input type="url" name="avatar" id="avatar" class="popup__profile popup__profile_edit_avatar" value=""
+          placeholder="Ссылка на новый аватар" required>
+        <span class="error" id="avatar-error"></span>
+        <button type="submit" class="popup__save popup__save_edit_avatar">Сохранить</button>
+      </form>
+    </div>
+  </div>
 
   <template class="template">
     <div class="galary__card">
@@ -82,7 +105,10 @@
       <button type="button" class="galary__trash"></button>
       <div class="galary__info">
         <h2 class="galary__text"></h2>
-        <button type="button" class="galary__like"></button>
+        <div class="galary__like-container">
+          <button type="button" class="galary__like"></button>
+          <span class="galary__like-counter"></span>
+        </div>
       </div>
     </div>
   </template>

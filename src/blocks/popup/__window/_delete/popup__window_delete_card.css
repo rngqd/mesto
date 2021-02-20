@@ -1,9 +1,9 @@
-.popup__window_edit_card {
+.popup__window_delete_card {
 	min-width: 240px;
 }
 
 @media screen and (min-width: 1024px) {
-	.popup__window_edit_card {
+	.popup__window_delete_card {
 		min-width: 430px;
 	}
 }

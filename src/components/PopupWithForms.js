@@ -12,7 +12,7 @@ export default class PopupWithForms extends Popup {
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value
     })
-   
+   return this._formValues
   }
 
   setEventListeners() {
@@ -23,7 +23,11 @@ export default class PopupWithForms extends Popup {
       this.close()
     })
   }
-  
+
+  returnIputValues() {
+    return this._getInputValues();
+  }
+
   close() {
     super.close();
     this._form.reset()

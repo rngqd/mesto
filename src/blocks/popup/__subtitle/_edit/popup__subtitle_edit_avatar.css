@@ -1,0 +1,17 @@
+.popup__subtitle_edit_avatar {
+	font-weight: 900;
+	font-size: 20px;
+	line-height: 26px;
+	width: 200px;
+	padding-top: 34px;
+	margin: 0 auto;
+  text-align: start;
+}
+
+@media screen and (min-width: 1024px) {
+	.popup__subtitle_edit_avatar {
+		font-size: 24px;
+		line-height: 29px;
+    width: 358px;
+	}
+}

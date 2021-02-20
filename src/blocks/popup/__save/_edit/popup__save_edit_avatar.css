@@ -1,0 +1,14 @@
+.popup__save_edit_avatar {
+	width: 200px;
+	height: 50px;
+  margin: 30px 0 20px;
+}
+
+
+@media screen and (min-width: 1024px) {
+	.popup__save_edit_avatar {
+		width: 358px;
+		margin: 54px 0 36px;
+
+	}
+}

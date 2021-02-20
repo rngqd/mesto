@@ -1,0 +1,17 @@
+.popup__subtitle_delete_card {
+	font-weight: 900;
+	font-size: 22px;
+	line-height: 29px;
+	width: 200px;
+	padding-top: 34px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+	.popup__subtitle_delete_card {
+		width: 358px;
+		font-size: 24px;
+		text-align: start;
+	}
+}
