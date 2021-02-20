@@ -13,10 +13,9 @@ export default class UserInfo {
 		};
 	}
 
-	setUserInfo(newName, newPost) {
-		this._name.textContent =
-			newName.value === "" ? this._name.textContent : newName.value;
-		this._post.textContent = newPost.value === "" ? this._post.textContent : newPost.value;
+	setUserInfo(data) {
+		this._name.textContent = data.name;
+		this._post.textContent = data.about;
 	}
 	initUserInfo(name, post,avatarUrl) {
 		this._name.textContent = name;

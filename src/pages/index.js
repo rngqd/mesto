@@ -68,8 +68,8 @@ function createCard({ name, link, likes, owner, _id }) {
 		templateCardElement,
 		handleCardClick,
 		() => {
-			confirmDeletePopup.setEventListeners(removeCard(card));
-			confirmDeletePopup.open();
+			confirmDeletePopup.open(removeCard(card));
+			confirmDeletePopup.setEventListeners();
 		},
 		() => {
 			api.addLike(card.returnCardId()).then((res) => {
@@ -132,22 +132,22 @@ export function handleCardClick(cardName, cardLink) {
 }
 
 //Создаём попап профиля, добавляем для него функциональность
-const profilePopup = new PopupWithForms(popUpProfileSelector, {
-	formSubmitHandler: () => {
-		renderLoading(".popup_edit_profile", true);
-		userInfo.setUserInfo(newName, newPost);
-		const newUserInfo = userInfo.getUserInfo();
-		api.setUserInfo(newUserInfo.name, newUserInfo.post)
-			.then(() => renderLoading(".popup_edit_profile", false))
-			.catch((err) => console.log(err));
-	},
-});
+const profilePopup = new PopupWithForms(popUpProfileSelector, { 
+	formSubmitHandler: () => { 
+		renderLoading(".popup_edit_profile", true); 
+		api.setUserInfo(newName.value, newPost.value) 
+			.then((res) => {
+				userInfo.setUserInfo(res); 
+				renderLoading(".popup_edit_profile", false)
+			}) 
+			.catch((err) => console.log(err)); 
+	}, 
+}); 
 
 profilePopup.setEventListeners();
 
 popUpEditProfileButton.addEventListener("click", () => {
 	formProfileValidation.resetValidation();
-	userInfo.getUserInfo();
 	newName.value = userInfo.getUserInfo().name;
 	newPost.value = userInfo.getUserInfo().post;
 	profilePopup.open();
@@ -163,10 +163,10 @@ const avatartPopup = new PopupWithForms(".popup_edit_avatar", {
 		});
 	},
 });
+avatartPopup.setEventListeners()
 const openAvatar = () => {
 	formPopUpValidation.resetValidation();
 	avatartPopup.open();
-	avatartPopup.setEventListeners();
 };
 changeAvatarButton.addEventListener("click", openAvatar);
 
