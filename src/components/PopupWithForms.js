@@ -1,4 +1,4 @@
-import Popup from "./popup.js";
+import Popup from "./Popup.js";
 export default class PopupWithForms extends Popup {
   constructor(popupSelector, { formSubmitHandler } ) {
 		super(popupSelector);
